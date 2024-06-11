@@ -49,8 +49,10 @@ def run_tandem(lambda_rate, mu1_rate, mu2_rate, running_time, initial_number_of_
 
 def simulate_runs(lambda_rate, mu1_rate, mu2_rate, running_time, N):
     results = []
+    q1_initial = 0
     for i in range(N):
-        simulation_tuple = run_tandem(lambda_rate, mu1_rate, mu2_rate, running_time, 0)
+        simulation_tuple = run_tandem(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
+        plot(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
         results.append(integrate(simulation_tuple, running_time))
     return np.mean(results)
 
