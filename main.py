@@ -108,7 +108,7 @@ def simulate_runs(lambda_rate, mu1_rate, mu2_rate, running_time, N ,q1_initial):
     for i in range(N):
         simulation_tuple = run_tandem(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
         results.append(integrate(simulation_tuple, running_time))
-        plot(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
+        # plot(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
     return np.mean(results)
 
 def main(q1_initial):
@@ -122,12 +122,16 @@ def main(q1_initial):
     for lambda_val in lambda_values:
         for mu1_val in mu1_values:
             for mu2_val in mu2_values:
+                average = 0
                 for T in T_values:
                     # Perform the simulation
                     expected_customers = simulate_runs(lambda_val, mu1_val, mu2_val, T,1000 ,q1_initial)
-
+                    average += expected_customers
                     # Log the results
-                    print(f'simulation time={T}, arrival rate={lambda_val}, departure rate 1={mu1_val}, departure rate 2={mu2_val}, number of customer in total system={expected_customers}')
+                    print(f'simulation time={T}, λ={lambda_val}, μ1={mu1_val}, μ2={mu2_val}, number of customer in total system={expected_customers}')
+                print(
+                    f'Average -> λ={lambda_val}, μ1={mu1_val}, μ2={mu2_val}, number of customer in total system={average/4}')
+                print("\n")
 
 
 # Entry point of the script
