@@ -49,7 +49,7 @@ def integrate(simulation_tuple, running_time):
 
 def run_tandem(arrival_rate, dep_rate1, dep_rate2, trial, initial_capacity):
     # Generate interarrival times based on the arrival rate and trial duration
-    interarrival_times = generate_interarrival_times(arrival_rate, trial)
+    inter_arrival_times = generate_interarrival_times(arrival_rate, trial)
     service_duration1 = generate_exponential_times(dep_rate1, len(interarrival_times) + initial_capacity) # get service time of first queue
     service_duration2 = generate_exponential_times(dep_rate2, len(interarrival_times) + initial_capacity) # get service time of second queue
 
