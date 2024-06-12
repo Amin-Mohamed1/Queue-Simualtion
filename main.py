@@ -108,7 +108,7 @@ def simulate_runs(lambda_rate, mu1_rate, mu2_rate, running_time, N ,q1_initial):
     for i in range(N):
         simulation_tuple = run_tandem(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
         results.append(integrate(simulation_tuple, running_time))
-        # plot(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
+        plot(lambda_rate, mu1_rate, mu2_rate, running_time, q1_initial)
     return np.mean(results)
 
 def main(q1_initial):
